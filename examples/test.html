@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+</head>
+
+<body>
+    <div id="test">
+        <input v-model="ctest">
+        <span @click="testclick">静态节点</span>
+        <div>
+            <div>静态节点</div>
+            <div>静态节点</div>
+        </div>
+        <selfd></selfd>
+    </div>
+    <script src="../dist/vue.js"></script>
+    <script>
+        
+        const selfd= {
+          template: `<div>测试</div>`,
+          mounted(){
+              console.log('子组件子组件子组件的mounted')
+          }
+        }
+
+        new Vue({
+            el: '#test',
+            components: {
+                selfd
+            },
+            data: {
+                ctest: '11',
+            },
+            methods: {
+                testclick() {
+                }
+            },
+            created() {
+                console.log('fcreated')
+
+            },
+            mounted() {
+                console.log('fmounted')
+            }
+        })
+    </script>
+</body>
+
+</html>
