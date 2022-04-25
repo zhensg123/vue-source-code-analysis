@@ -25,7 +25,11 @@
           template: `<div>测试</div>`,
           mounted(){
               console.log('子组件子组件子组件的mounted')
-          }
+          },
+          created() {
+                console.log('子fcreated')
+
+            }
         }
 
         new Vue({

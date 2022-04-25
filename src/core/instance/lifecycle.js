@@ -144,7 +144,6 @@ export function mountComponent (
   hydrating?: boolean
 ): Component {
   vm.$el = el
-  console.log(vm.$options.render, el,  'vm.$options.rendervm.$options.render')
   if (!vm.$options.render) {
     vm.$options.render = createEmptyVNode
     if (process.env.NODE_ENV !== 'production') {
@@ -165,6 +164,7 @@ export function mountComponent (
       }
     }
   }
+  // 在created之后，在beforeMount之前，编译了template 生成了render函数
   callHook(vm, 'beforeMount')
 
   let updateComponent

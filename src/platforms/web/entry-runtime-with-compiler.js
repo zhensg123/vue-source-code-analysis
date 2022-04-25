@@ -19,7 +19,6 @@ Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
-  console.log(el, 'elelelelelelellelelel344444444444')
   el = el && query(el)
 
   /* istanbul ignore if */
@@ -31,9 +30,9 @@ Vue.prototype.$mount = function (
   }
 
   const options = this.$options
-  console.log(options, options.render, 'entry-runtime-with-compiler')
   // resolve template/el and convert to render function
   if (!options.render) {
+    // 适用于使用template的情况
     let template = options.template
     if (template) {
       if (typeof template === 'string') {
@@ -63,7 +62,6 @@ Vue.prototype.$mount = function (
       if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
         mark('compile')
       }
-console.log(template, 'templatetemplatetemplatetemplate')
       const { render, staticRenderFns } = compileToFunctions(template, {
         outputSourceRange: process.env.NODE_ENV !== 'production',
         shouldDecodeNewlines,
@@ -72,7 +70,6 @@ console.log(template, 'templatetemplatetemplatetemplate')
         comments: options.comments
       }, this)
       options.render = render
-      console.log(render, 'renderrenderrenderrender')
       options.staticRenderFns = staticRenderFns
       /* istanbul ignore if */
       if (process.env.NODE_ENV !== 'production' && config.performance && mark) {

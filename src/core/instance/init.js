@@ -15,7 +15,9 @@ let uid = 0
 export function initMixin (Vue: Class<Component>) {
   Vue.prototype._init = function (options?: Object) {
     const vm: Component = this
+
     // a uid
+    // vue实例id 唯一
     vm._uid = uid++
     let startTag, endTag
     /* istanbul ignore if */
@@ -32,6 +34,7 @@ export function initMixin (Vue: Class<Component>) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
       // internal component options needs special treatment.
+      // 创建内部组件
       initInternalComponent(vm, options)
     } else {
       vm.$options = mergeOptions(
@@ -40,6 +43,7 @@ export function initMixin (Vue: Class<Component>) {
         vm
       )
     }
+
     /* istanbul ignore else */
     if (process.env.NODE_ENV !== 'production') {
       initProxy(vm)
@@ -48,12 +52,23 @@ export function initMixin (Vue: Class<Component>) {
     }
     // expose real self
     vm._self = vm
+    // 初始化内部参数
     initLifecycle(vm)
+    // 初始化事件
     initEvents(vm)
+    // 初始化渲染
     initRender(vm)
+
+    // 生命周期函数执行
     callHook(vm, 'beforeCreate')
+
+    // 初始化注入
     initInjections(vm) // resolve injections before data/props
+
+    // 初始化state
     initState(vm)
+
+    // 初始化provide
     initProvide(vm) // resolve provide after data/props
     callHook(vm, 'created')
     /* istanbul ignore if */
@@ -64,12 +79,14 @@ export function initMixin (Vue: Class<Component>) {
     }
 
     if (vm.$options.el) {
+      // 挂载
       vm.$mount(vm.$options.el)
     }
   }
 }
 
 export function initInternalComponent (vm: Component, options: InternalComponentOptions) {
+  console.log(vm.constructor, vm,  'vm.constructorvm.constructorvm.constructor')
   const opts = vm.$options = Object.create(vm.constructor.options)
   // doing this because it's faster than dynamic enumeration.
   const parentVnode = options._parentVnode

@@ -39,7 +39,6 @@ Vue.prototype.$mount = function (
   hydrating?: boolean
 ): Component {
   el = el && inBrowser ? query(el) : undefined
-  console.log('$mount$mountv$mount', el)
   return mountComponent(this, el, hydrating)
 }
 

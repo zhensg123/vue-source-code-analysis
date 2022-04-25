@@ -114,7 +114,8 @@ export function eventsMixin (Vue: Class<Component>) {
     }
     return vm
   }
-
+  
+  // 就是发布订阅模式
   Vue.prototype.$emit = function (event: string): Component {
     const vm: Component = this
     if (process.env.NODE_ENV !== 'production') {

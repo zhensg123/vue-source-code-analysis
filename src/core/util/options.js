@@ -27,7 +27,6 @@ import {
  * value into the final value.
  */
 const strats = config.optionMergeStrategies
-
 /**
  * Options with restrictions
  */
@@ -168,8 +167,9 @@ function dedupeHooks (hooks) {
   }
   return res
 }
-
+// LIFECYCLE_HOOKS生命周期函数
 LIFECYCLE_HOOKS.forEach(hook => {
+  // mergeHook将生命周期函数变为数组形式
   strats[hook] = mergeHook
 })
 
@@ -401,7 +401,7 @@ export function mergeOptions (
   normalizeProps(child, vm)
   normalizeInject(child, vm)
   normalizeDirectives(child)
-
+  console.log(child, vm, '3333333333333333333')
   // Apply extends and mixins on the child options,
   // but only if it is a raw options object that isn't
   // the result of another mergeOptions call.
@@ -420,9 +420,12 @@ export function mergeOptions (
   const options = {}
   let key
   for (key in parent) {
+
     mergeField(key)
+
   }
   for (key in child) {
+
     if (!hasOwn(parent, key)) {
       mergeField(key)
     }
@@ -431,6 +434,7 @@ export function mergeOptions (
     const strat = strats[key] || defaultStrat
     options[key] = strat(parent[key], child[key], vm, key)
   }
+
   return options
 }
 

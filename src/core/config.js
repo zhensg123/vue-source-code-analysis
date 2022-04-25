@@ -9,7 +9,7 @@ import {
 import { LIFECYCLE_HOOKS } from 'shared/constants'
 
 export type Config = {
-  // user
+  // user 参数合并策略
   optionMergeStrategies: { [key: string]: Function };
   silent: boolean;
   productionTip: boolean;
