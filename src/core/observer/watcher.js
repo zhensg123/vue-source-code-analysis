@@ -53,7 +53,6 @@ export default class Watcher {
     if (isRenderWatcher) {
       vm._watcher = this // 用于强制更新 $forceUpdate
     }
-    console.log(vm._watchers, 'vm._watcher') 
     vm._watchers.push(this)  // 用于销毁所有watch
     // options
     if (options) {

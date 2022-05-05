@@ -160,7 +160,6 @@ export function createPatchFunction (backend) {
           )
         }
       }
-
       vnode.elm = vnode.ns
         ? nodeOps.createElementNS(vnode.ns, tag)
         : nodeOps.createElement(tag, vnode)
@@ -191,6 +190,7 @@ export function createPatchFunction (backend) {
         if (isDef(data)) {
           invokeCreateHooks(vnode, insertedVnodeQueue)
         }
+        console.log(parentElm, 'parentElmparentElmparentElmparentElm')
         insert(parentElm, vnode.elm, refElm)
       }
 
@@ -273,6 +273,7 @@ export function createPatchFunction (backend) {
   }
 
   function insert (parent, elm, ref) {
+ 
     if (isDef(parent)) {
       if (isDef(ref)) {
         if (nodeOps.parentNode(ref) === parent) {
